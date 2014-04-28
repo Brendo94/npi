@@ -5,15 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Contatos</title>
+<title>Disciplinas</title>
 </head>
 <body>
-	<h1>Listagem de Contatos</h1>
+	<h1>Listagem de Disciplinas</h1>
 	<table border="1">
-		<c:forEach var="contato" items="${contatos}">
+		<c:forEach var="disciplina" items="${disciplinas}">
 			<tr>
-				<td>${contato.nome}</td>
-				<td>${contato.fone}</td>
+				<td>${disciplina.nome}</td>
+				<td>${disciplina.cod_d}</td>
 			</tr>
 		</c:forEach>
 	</table>

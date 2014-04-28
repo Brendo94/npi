@@ -5,35 +5,37 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Contato {
+@Table(name="disciplinas")
+public class Disciplina {
 
-	public Contato() {
+	public Disciplina() {
 		super();
 	}
 
-	public Contato(String nome, String fone) {
+	public Disciplina(String nome, String cod_d) {
 		super();
 		this.nome = nome;
-		this.fone = fone;
+		this.cod_d = cod_d;
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer id_d;
 
 	@Column(nullable=false)
 	private String nome;
 
-	private String fone;
+	private String cod_d;
 
 	public Integer getId() {
-		return id;
+		return id_d;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId(Integer id_d) {
+		this.id_d = id_d;
 	}
 
 	public String getNome() {
@@ -44,17 +46,17 @@ public class Contato {
 		this.nome = nome;
 	}
 
-	public String getFone() {
-		return fone;
+	public String getCod_d() {
+		return cod_d;
 	}
 
-	public void setFone(String fone) {
-		this.fone = fone;
+	public void setCod_d(String cod_d) {
+		this.cod_d = cod_d;
 	}
 
 	@Override
 	public String toString() {
-		return "Contato [id=" + id + ", nome=" + nome + ", fone=" + fone + "]";
+		return "Disciplina [id_d=" + id_d + ", nome=" + nome + ", cod_d=" + cod_d + "]";
 	}
 
 }

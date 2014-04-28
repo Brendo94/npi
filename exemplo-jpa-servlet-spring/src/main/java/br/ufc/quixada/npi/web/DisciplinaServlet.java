@@ -15,14 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-import br.ufc.quixada.npi.model.Contato;
-import br.ufc.quixada.npi.service.ContatoService;
+import br.ufc.quixada.npi.model.Disciplina;
+import br.ufc.quixada.npi.service.DisciplinaService;
 
 @WebServlet("/")
-public class ContatoServlet extends HttpServlet {
+public class DisciplinaServlet extends HttpServlet {
 	
 	@Inject
-	private ContatoService cs;
+	private DisciplinaService ds;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -32,9 +32,10 @@ public class ContatoServlet extends HttpServlet {
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Contato> contatos = cs.findAll();
-		request.setAttribute("contatos", contatos);
-		RequestDispatcher rd = request.getRequestDispatcher("/listar_contatos.jsp");
+		List<Disciplina> disciplinas = ds.findAll();
+	
+		request.setAttribute("disciplinas", disciplinas);
+		RequestDispatcher rd = request.getRequestDispatcher("/listar_disciplinas.jsp");
 		rd.forward(request, response);
 	}
 
