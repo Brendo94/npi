@@ -19,5 +19,10 @@ public class JpaDisciplinaRepositoryImpl implements DisciplinaRepository {
 	public List<Disciplina> findAll() {
 		return em.createQuery("from Disciplina", Disciplina.class).getResultList();
 	}
-
+	
+	public List<Disciplina> findByCod(String cod) {
+		return em.createQuery("from Disciplina where cod_d =:cod", Disciplina.class).setParameter("cod", cod).getResultList();
+	}
+	
+	
 }

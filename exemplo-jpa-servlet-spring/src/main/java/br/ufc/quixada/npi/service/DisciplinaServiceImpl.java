@@ -25,5 +25,10 @@ public class DisciplinaServiceImpl implements DisciplinaService {
 		List<Disciplina> d = disciplinaRepository.findAll();
 		return d;
 	}
+	@Transactional
+	public List<Disciplina> findByCod(String disc) {
+		List<Disciplina> d = disciplinaRepository.findByCod(disc);
+		return d;
+	}
 
 }

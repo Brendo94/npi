@@ -1,32 +1,34 @@
 package br.ufc.quixada.npi.web;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
-
 import javax.inject.Inject;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.context.support.SpringBeanAutowiringSupport;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.ufc.quixada.npi.model.Disciplina;
 import br.ufc.quixada.npi.service.DisciplinaService;
 
-@WebServlet("/")
-public class DisciplinaServlet extends HttpServlet {
+@Controller
+@RequestMapping("/disciplina")
+public class DisciplinaServlet {
 	
 	@Inject
 	private DisciplinaService ds;
 	
 	private static final long serialVersionUID = 1L;
+	
+	@RequestMapping("/listar")
+	public String listar(ModelMap model) {
+		model.addAttribute("disciplinas", ds.findAll());
+		return "listar_disciplinas";
+	}
+	@RequestMapping("/buscar")
+	public String buscar(ModelMap model, String disc) {
+		model.addAttribute("disciplinas", ds.findByCod(disc));
+		return "listar_disciplinas";
+	}
 
-	public void init(ServletConfig config) throws ServletException {
+	/*public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
@@ -37,6 +39,6 @@ public class DisciplinaServlet extends HttpServlet {
 		request.setAttribute("disciplinas", disciplinas);
 		RequestDispatcher rd = request.getRequestDispatcher("/listar_disciplinas.jsp");
 		rd.forward(request, response);
-	}
+	}*/
 
 }
