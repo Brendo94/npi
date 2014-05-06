@@ -22,11 +22,6 @@ public class DisciplinaServlet {
 		model.addAttribute("disciplinas", ds.findAll());
 		return "listar_disciplinas";
 	}
-	@RequestMapping("/buscar")
-	public String buscar(ModelMap model, String disc) {
-		model.addAttribute("disciplinas", ds.findByCod(disc));
-		return "listar_disciplinas";
-	}
 
 	/*public void init(ServletConfig config) throws ServletException {
 		super.init(config);

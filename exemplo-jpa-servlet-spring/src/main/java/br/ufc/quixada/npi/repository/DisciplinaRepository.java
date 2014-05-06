@@ -8,6 +8,4 @@ public interface DisciplinaRepository {
 
 	public abstract List<Disciplina> findAll();
 	
-	public abstract List<Disciplina> findByCod(String cod);
-	
 }
